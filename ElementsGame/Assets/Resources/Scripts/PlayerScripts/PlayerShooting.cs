@@ -25,7 +25,7 @@ public class PlayerShooting : MonoBehaviour
 
         LookAtMouse();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Shooting();
         }
@@ -34,20 +34,23 @@ public class PlayerShooting : MonoBehaviour
         Debug.Log(timer);
     }
 
+    private void FixedUpdate()
+    {
+        if (fireCooldown)
+        {
+            FiringTimer();
+        }
+    }
+
     private void LookAtMouse()
     {
         mousePos = Input.mousePosition;
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-        Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + ray.direction * 100, Color.red);
-
         if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit hit, 100, 1 << hitMask))
         {
-            Debug.DrawLine(Camera.main.transform.position, hit.point, Color.red);
-
             Vector3 dir = hit.point - transform.position;
-
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -56,13 +59,14 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shooting()
     {
-        Vector3 projectilePosition = new Vector3(transform.position.x, transform.position.y, 0.1f);
-       
+        Vector3 projectilePosition = transform.position;
+        projectilePosition.z = 0.1f;
+
         if (!fireCooldown)
         {
             timer = 3f;
+            fireCooldown = true;
             Instantiate(projectile, projectilePosition, transform.rotation);
-            FiringTimer();
         }
     }
 
@@ -72,7 +76,6 @@ public class PlayerShooting : MonoBehaviour
         if (timer > 0)
         {
             timer -= Time.deltaTime;
-            fireCooldown = true;
         }
         if (timer <= 0)
         {

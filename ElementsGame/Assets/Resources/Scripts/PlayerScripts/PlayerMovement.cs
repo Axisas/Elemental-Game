@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D playerRigidBody;
 
+    [SerializeField]
+    private GameObject spriteRenderer;
+
     public void Awake()
     {
         roomsGenerated = 0;
@@ -43,6 +46,15 @@ public class PlayerMovement : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         Vector2 xMovement = new Vector2(xInput * moveSpeed, playerRigidBody.velocity.y);
         playerRigidBody.velocity = xMovement;
+
+        if (xInput < 0)
+        {
+            spriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
+        } 
+        if (xInput > 0)
+        {
+            spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void Jump()
