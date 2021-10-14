@@ -6,7 +6,7 @@ public class PlayerShooting : MonoBehaviour
 {
 
     public GameObject projectile;
-    
+
     private float timer;
     private Vector3 mousePos;
     public string ActiveElement;

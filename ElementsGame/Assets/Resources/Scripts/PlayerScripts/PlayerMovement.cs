@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     public float jumpHeight;
 
+    public float Health;
+
     public float roomsGenerated;
 
     private Rigidbody2D playerRigidBody;
@@ -21,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
     {
         roomsGenerated = 0;
         playerRigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        Health = 10;
     }
 
     void FixedUpdate()
