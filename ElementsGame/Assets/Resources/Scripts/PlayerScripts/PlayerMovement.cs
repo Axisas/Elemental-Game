@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float roomsGenerated;
 
     private Rigidbody2D playerRigidBody;
+    private bool airJumpLeft;
+    private bool inAir;
 
     [SerializeField]
     private GameObject spriteRenderer;
@@ -39,11 +41,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(groundCheck.position, sphereRadius, groundMask) == null)
         {
-            return;
+            inAir = true;
         }
         else
         {
+            inAir = false;
+            airJumpLeft = true;
+        }
+
+        if (!inAir)
+        {
             Jump();
+        }
+        if (inAir && airJumpLeft)
+        {
+            AirJump();
         }
     }
 
@@ -71,6 +83,17 @@ public class PlayerMovement : MonoBehaviour
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.AddForce(yMovement, ForceMode2D.Impulse);
             
+            airJumpLeft = false;
+        }
+    }
+
+    void AirJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
+            playerRigidBody.velocity = yMovement;
+            airJumpLeft = false;
         }
     }
 
