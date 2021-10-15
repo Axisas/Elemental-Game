@@ -13,7 +13,7 @@ public class PlayerShooting : MonoBehaviour
     private bool fireCooldown;
 
     [SerializeField]
-    int hitMask;
+    LayerMask hitMask;
 
     private void Start()
     {
@@ -48,7 +48,7 @@ public class PlayerShooting : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-        if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit hit, 100, 1 << hitMask))
+        if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit hit, 100, hitMask))
         {
             Vector3 dir = hit.point - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
