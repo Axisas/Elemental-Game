@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
         if (player != null)
         {
             location = player.position + offset;
-            location.x = Mathf.Max(location.x, 9);
-            location.y = Mathf.Clamp(location.y, -0.8f, 15);
+            location.x = Mathf.Max(location.x, 10);
+            location.y = Mathf.Clamp(location.y, 0.5f, 14);
             transform.position = location;
         }
     }
