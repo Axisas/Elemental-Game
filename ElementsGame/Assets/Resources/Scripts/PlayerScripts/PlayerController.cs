@@ -32,13 +32,19 @@ public class PlayerController : MonoBehaviour
         Health = 10;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Movement();
     }
 
-    void Update()
+    private void Update()
     {
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+            Debug.Log("R.I.P. You died.");
+        }
+
         if (Physics2D.OverlapCircle(groundCheck.position, sphereRadius, groundMask) == null)
         {
             inAir = true;
@@ -60,7 +66,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Movement()
+    private void Movement()
     {
         float xInput = Input.GetAxis("Horizontal");
         Vector2 xMovement = new Vector2(xInput * moveSpeed, playerRigidBody.velocity.y);
@@ -76,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -87,13 +93,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void AirJump()
+    private void AirJump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.velocity = yMovement;
             airJumpLeft = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Health--;
         }
     }
 
