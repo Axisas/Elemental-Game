@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public GameObject player;
+    public Transform player;
+    public GameObject currentRoom;
 
     private Vector3 offset = new Vector3(0, 1, -5f);
 
@@ -13,7 +14,7 @@ public class CameraController : MonoBehaviour
     {
         if (player != null)
         {
-            transform.position = player.transform.position + offset;
+            transform.position = player.position + offset;
         }
     }
 

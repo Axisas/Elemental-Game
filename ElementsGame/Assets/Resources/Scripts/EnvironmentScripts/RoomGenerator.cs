@@ -8,7 +8,7 @@ public class RoomGenerator : MonoBehaviour
     private string roomType;
     private Vector3 location;
 
-    public PlayerMovement playerScript;
+    public PlayerController playerScript;
 
     private void Start()
     {

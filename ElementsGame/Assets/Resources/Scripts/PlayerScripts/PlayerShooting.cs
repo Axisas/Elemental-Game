@@ -29,9 +29,6 @@ public class PlayerShooting : MonoBehaviour
         {
             Shooting();
         }
-
-        Debug.Log(fireCooldown);
-        Debug.Log(timer);
     }
 
     private void FixedUpdate()
