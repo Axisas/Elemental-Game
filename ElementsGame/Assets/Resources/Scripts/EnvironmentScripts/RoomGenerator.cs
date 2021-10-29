@@ -8,10 +8,13 @@ public class RoomGenerator : MonoBehaviour
     private string roomType;
     private Vector3 location;
 
-    public PlayerMovement playerScript;
+    private PlayerController playerScript;
 
     private void Start()
     {
+        GameObject Player = GameObject.Find("Player");
+        playerScript = Player.GetComponent<PlayerController>();
+
         if (playerScript.roomsGenerated <= 5)
         {
             location = new Vector3(transform.position.x, transform.position.y, 0);
