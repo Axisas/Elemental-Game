@@ -109,6 +109,10 @@ public class PlayerController : MonoBehaviour
         {
             Health--;
         }
+        if (collision.gameObject.tag == "EnemyAttacks")
+        {
+            Health -= 2;
+        }
     }
 
 

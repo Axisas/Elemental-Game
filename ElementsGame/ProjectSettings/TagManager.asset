@@ -9,6 +9,7 @@ TagManager:
   - 20x10
   - PlayerProjectile
   - Enemy
+  - EnemyAttacks
   layers:
   - Default
   - TransparentFX

@@ -8,52 +8,81 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private float moveSpeed;
     private float xScale;
+    private float lookDistance;
+    private Vector2 direction;
+
 
     public float health;
 
     [SerializeField]
     private FloorDetector floorDetector;
 
+    [SerializeField]
+    private WallDetector wallDetector;
+
+    [SerializeField]
+    private GameObject eyePoint;
+
+    [SerializeField]
+    private LayerMask playerLayerMask;
+
+    [SerializeField]
+    private Collider2D attackCollider;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
         moveSpeed = 3;
         xScale = 1;
         health = 5;
+        lookDistance = 5;
+        direction = Vector2.right;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+
         Movement();
 
         if (health <= 0)
         {
             Destroy(gameObject);
         }
+
+        LookForPlayer();
+
     }
+
 
     private void Movement()
     {
+        Vector2 movement = new Vector2(moveSpeed, rb.velocity.y);
+        if (wallDetector.wallDetected)
+        {
+            Rotate();
+            wallDetector.wallDetected = false;
+
+        }
         if (!floorDetector.platformEnds)
         {
-            rb.velocity = new Vector3(moveSpeed, 0, 0);
-        } else
+            rb.velocity = movement;
+        }
+        else
         {
             Rotate();
+            floorDetector.platformEnds = false;
         }
 
-        if (!transform.hasChanged)
-        {
-            Rotate();
-        }
     }
 
     private void Rotate()
     {
-        xScale = -xScale;
         moveSpeed = -moveSpeed;
+        direction = -direction;
+        xScale = -xScale;
         transform.localScale = new Vector3(xScale, 1, 1);
-        floorDetector.platformEnds = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -63,5 +92,40 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject);
             health--;
         }
+    }
+
+    private void LookForPlayer()
+    {
+        
+        RaycastHit2D hitPlayer = Physics2D.Raycast(eyePoint.transform.position, direction, lookDistance, playerLayerMask);
+        if (hitPlayer.collider != null)
+        {
+            Attack();
+        }
+        else
+        {
+            moveSpeed = 3;
+        }
+        
+    }
+
+    private void Attack()
+    {
+        moveSpeed = 5;
+
+        /*
+        float attackTimer = 2;
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+            attackCollider.enabled = false;
+
+        }
+        if (attackTimer <= 0)
+        {
+            attackTimer = 0;
+            attackCollider.enabled = true;
+        }
+        */
     }
 }
