@@ -7,6 +7,9 @@ TagManager:
   - 10x10
   - 10x20
   - 20x10
+  - PlayerProjectile
+  - Enemy
+  - EnemyAttacks
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - PlayerProjectiles
+  - 
   - 
   - 
   - 

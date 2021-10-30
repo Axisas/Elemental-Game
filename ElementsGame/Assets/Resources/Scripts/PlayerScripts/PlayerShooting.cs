@@ -61,7 +61,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (!fireCooldown)
         {
-            timer = 3f;
+            timer = 1f;
             fireCooldown = true;
             Instantiate(projectile, projectilePosition, transform.rotation);
         }

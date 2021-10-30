@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         if (xInput < 0)
         {
             spriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
-        } 
+        }
         if (xInput > 0)
         {
             spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.AddForce(yMovement, ForceMode2D.Impulse);
-            
+
             airJumpLeft = false;
         }
     }
