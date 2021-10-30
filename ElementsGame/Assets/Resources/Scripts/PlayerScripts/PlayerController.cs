@@ -32,19 +32,13 @@ public class PlayerController : MonoBehaviour
         Health = 10;
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         Movement();
     }
 
-    private void Update()
+    void Update()
     {
-        if (Health <= 0)
-        {
-            Destroy(gameObject);
-            Debug.Log("R.I.P. You died.");
-        }
-
         if (Physics2D.OverlapCircle(groundCheck.position, sphereRadius, groundMask) == null)
         {
             inAir = true;
@@ -66,7 +60,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Movement()
+    void Movement()
     {
         float xInput = Input.GetAxis("Horizontal");
         Vector2 xMovement = new Vector2(xInput * moveSpeed, playerRigidBody.velocity.y);
@@ -75,43 +69,31 @@ public class PlayerController : MonoBehaviour
         if (xInput < 0)
         {
             spriteRenderer.transform.localScale = new Vector3(-1, 1, 1);
-        } 
+        }
         if (xInput > 0)
         {
             spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
-    private void Jump()
+    void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.AddForce(yMovement, ForceMode2D.Impulse);
-            
+
             airJumpLeft = false;
         }
     }
 
-    private void AirJump()
+    void AirJump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.velocity = yMovement;
             airJumpLeft = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Health--;
-        }
-        if (collision.gameObject.tag == "EnemyAttacks")
-        {
-            Health -= 2;
         }
     }
 

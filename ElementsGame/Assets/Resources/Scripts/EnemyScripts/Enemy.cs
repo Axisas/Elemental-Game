@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private float xScale;
     private float lookDistance;
     private Vector2 direction;
-
+    private Vector3 movement;
 
     public float health;
 
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
         direction = Vector2.right;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
 
         Movement();
@@ -58,12 +58,11 @@ public class Enemy : MonoBehaviour
 
     private void Movement()
     {
-        Vector2 movement = new Vector2(moveSpeed, rb.velocity.y);
+        movement = new Vector2(moveSpeed, rb.velocity.y);
+
         if (wallDetector.wallDetected)
         {
             Rotate();
-            wallDetector.wallDetected = false;
-
         }
         if (!floorDetector.platformEnds)
         {
@@ -72,9 +71,7 @@ public class Enemy : MonoBehaviour
         else
         {
             Rotate();
-            floorDetector.platformEnds = false;
         }
-
     }
 
     private void Rotate()
@@ -83,6 +80,9 @@ public class Enemy : MonoBehaviour
         direction = -direction;
         xScale = -xScale;
         transform.localScale = new Vector3(xScale, 1, 1);
+        wallDetector.wallDetected = false;
+        floorDetector.platformEnds = false;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -96,23 +96,16 @@ public class Enemy : MonoBehaviour
 
     private void LookForPlayer()
     {
-        
         RaycastHit2D hitPlayer = Physics2D.Raycast(eyePoint.transform.position, direction, lookDistance, playerLayerMask);
         if (hitPlayer.collider != null)
         {
             Attack();
         }
-        else
-        {
-            moveSpeed = 3;
-        }
-        
+
     }
 
     private void Attack()
-    {
-        moveSpeed = 5;
-
+    { 
         /*
         float attackTimer = 2;
         if (attackTimer > 0)
