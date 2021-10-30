@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float enemyBulletSpeed = 20f;
+    public float bulletSpeed;
 
     public Rigidbody2D rb;
 
@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         bulletTimer = 3;
-        rb.velocity = transform.right * enemyBulletSpeed;
+        rb.velocity = transform.right * bulletSpeed;
         if (bulletTimer > 0)
         {
             bulletTimer -= Time.deltaTime;

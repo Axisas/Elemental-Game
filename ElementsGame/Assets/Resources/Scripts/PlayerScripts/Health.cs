@@ -20,6 +20,5 @@ public class Health : MonoBehaviour
         hp = playerScript.Health;
 
         hpText.text = hp.ToString();
-        Debug.Log(hp);
     }
 }
