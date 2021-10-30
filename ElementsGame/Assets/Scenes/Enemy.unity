@@ -178,6 +178,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5819412227843139007, guid: 256637b5b303fa640bd8ada708733473, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819412227843139007, guid: 256637b5b303fa640bd8ada708733473, type: 3}
+      propertyPath: jumpHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819412227843139007, guid: 256637b5b303fa640bd8ada708733473, type: 3}
+      propertyPath: sphereRadius
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256637b5b303fa640bd8ada708733473, type: 3}
 --- !u!114 &703075178 stripped
@@ -1069,6 +1081,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 703075178}
     - target: {fileID: 6040536028363751265, guid: d02ed00d7a47d9a4cb2b0605f9765ad2, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 2102095322}
+    - target: {fileID: 6040536028363751265, guid: d02ed00d7a47d9a4cb2b0605f9765ad2, type: 3}
       propertyPath: playerLayerMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -1078,11 +1094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6040536028363751268, guid: d02ed00d7a47d9a4cb2b0605f9765ad2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.83
+      value: 39.32
       objectReference: {fileID: 0}
     - target: {fileID: 6040536028363751268, guid: d02ed00d7a47d9a4cb2b0605f9765ad2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 6040536028363751268, guid: d02ed00d7a47d9a4cb2b0605f9765ad2, type: 3}
       propertyPath: m_LocalPosition.z

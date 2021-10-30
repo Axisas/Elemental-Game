@@ -11,9 +11,11 @@ public class Enemy : MonoBehaviour
     private float lookDistance;
     private Vector2 direction;
     private Vector3 movement;
+    private float attackTimer;
+    private float attackStartTimer;
 
     public float health;
-
+    
     [SerializeField]
     private FloorDetector floorDetector;
 
@@ -29,6 +31,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Collider2D attackCollider;
 
+    [SerializeField]
+    private SpriteRenderer attackBox;
+
 
     private void Start()
     {
@@ -37,7 +42,7 @@ public class Enemy : MonoBehaviour
         moveSpeed = 3;
         xScale = 1;
         health = 5;
-        lookDistance = 5;
+        lookDistance = 8;
         direction = Vector2.right;
     }
 
@@ -45,13 +50,27 @@ public class Enemy : MonoBehaviour
     {
 
         Movement();
+        LookForPlayer();
 
         if (health <= 0)
         {
             Destroy(gameObject);
         }
 
-        LookForPlayer();
+    }
+
+    private void FixedUpdate()
+    {
+        // Timers
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+        if (attackTimer <= 0)
+        {
+            attackBox.enabled = false;
+            attackCollider.enabled = false;
+        }
 
     }
 
@@ -97,28 +116,25 @@ public class Enemy : MonoBehaviour
     private void LookForPlayer()
     {
         RaycastHit2D hitPlayer = Physics2D.Raycast(eyePoint.transform.position, direction, lookDistance, playerLayerMask);
+
         if (hitPlayer.collider != null)
         {
-            Attack();
+            RaycastHit2D hit = Physics2D.Linecast(eyePoint.transform.position, hitPlayer.transform.position, playerLayerMask);
+
+            if (hit.distance < 3)
+            {
+                Invoke("Attack", 1);
+            }
         }
 
     }
 
     private void Attack()
-    { 
-        /*
-        float attackTimer = 2;
-        if (attackTimer > 0)
-        {
-            attackTimer -= Time.deltaTime;
-            attackCollider.enabled = false;
+    {
+        attackBox.enabled = true;
+        attackCollider.enabled = true;
 
-        }
-        if (attackTimer <= 0)
-        {
-            attackTimer = 0;
-            attackCollider.enabled = true;
-        }
-        */
+        attackTimer = 0.5f;
+
     }
 }
