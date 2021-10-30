@@ -69,7 +69,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void FiringTimer()
     {
-        
+
         if (timer > 0)
         {
             timer -= Time.deltaTime;
