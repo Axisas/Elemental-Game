@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         // Timers
         if (attackTimer > 0)
         {
@@ -100,7 +101,6 @@ public class Enemy : MonoBehaviour
         xScale = -xScale;
         transform.localScale = new Vector3(xScale, 1, 1);
         wallDetector.wallDetected = false;
-        floorDetector.platformEnds = false;
 
     }
 

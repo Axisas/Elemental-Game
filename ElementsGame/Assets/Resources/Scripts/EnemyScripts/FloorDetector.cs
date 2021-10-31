@@ -5,13 +5,20 @@ using UnityEngine;
 public class FloorDetector : MonoBehaviour
 {
 
+    private bool touching;
     public bool platformEnds;
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
-            platformEnds = true;
+            platformEnds = false;
         }
     }
+
+    private void FixedUpdate()
+    {
+        platformEnds = true;
+    }
+
 }
