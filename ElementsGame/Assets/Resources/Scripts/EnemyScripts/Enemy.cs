@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     private Vector2 direction;
     private Vector3 movement;
     private float attackTimer;
-    private float attackStartTimer;
 
     public float health;
     
@@ -30,10 +29,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private Collider2D attackCollider;
-
-    [SerializeField]
-    private SpriteRenderer attackBox;
-
 
     private void Start()
     {
@@ -69,7 +64,6 @@ public class Enemy : MonoBehaviour
         }
         if (attackTimer <= 0)
         {
-            attackBox.enabled = false;
             attackCollider.enabled = false;
         }
 
@@ -131,7 +125,6 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        attackBox.enabled = true;
         attackCollider.enabled = true;
 
         attackTimer = 0.5f;

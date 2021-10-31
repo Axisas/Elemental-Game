@@ -11,6 +11,7 @@ public class Generator : MonoBehaviour
     private string presetType;
     private float randomizer;
     Vector3 location;
+
     private void Awake()
     {
 
