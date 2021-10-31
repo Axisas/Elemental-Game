@@ -345,7 +345,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  jumpHeight: 10
+  jumpHeight: 15
   Health: 0
   roomsGenerated: 0
   spriteRenderer: {fileID: 2827413576569753986}

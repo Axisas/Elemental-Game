@@ -17,8 +17,9 @@ public class RoomGenerator : MonoBehaviour
 
         if (playerScript.roomsGenerated <= 5)
         {
+            float lvlRandom = Random.Range(1,3);
             location = new Vector3(transform.position.x, transform.position.y, 0);
-            roomType = "Prefabs/LevelCreation/LevelPresets/LvlLayout" + 1f;
+            roomType = "Prefabs/LevelCreation/LevelPresets/LvlLayout" + lvlRandom;
 
             GameObject instance = Instantiate(Resources.Load(roomType, typeof(GameObject)), location, Quaternion.identity) as GameObject;
             playerScript.roomsGenerated++;
