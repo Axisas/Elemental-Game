@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - EnemyAttacks
   - PlayerStrongProjectile
+  - WoodenPlatform
   layers:
   - Default
   - TransparentFX

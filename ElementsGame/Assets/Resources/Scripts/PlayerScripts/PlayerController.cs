@@ -17,9 +17,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidBody;
     private bool airJumpLeft;
     private bool inAir;
+    private bool downKeyHeldDown;
+    private float timer;
+
 
     [SerializeField]
     private GameObject spriteRenderer;
+
+    [SerializeField]
+    private Collider2D hitbox;
+
+    [SerializeField]
+    private ParticleSystem damageEffect;
 
     public void Awake()
     {
@@ -35,6 +44,16 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (timer <= 0)
+        {
+            timer = 0;
+            hitbox.enabled = true;
+        }
     }
 
     void Update()
@@ -57,6 +76,12 @@ public class PlayerController : MonoBehaviour
         {
             AirJump();
         }
+
+        if (Health <= 0)
+        {
+            //Ded
+            Debug.Log("RIP");
+        }
     }
 
 
@@ -78,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !downKeyHeldDown)
         {
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.AddForce(yMovement, ForceMode2D.Impulse);
@@ -101,13 +126,37 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyAttacks")
         {
+            damageEffect.Play();
             Health -= 5;
         }
         if (collision.gameObject.tag == "Enemy")
         {
+            damageEffect.Play();
             Health -= 1;
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "WoodenPlatform")
+        {
+            if (Input.GetKey(KeyCode.S))
+            {
+                downKeyHeldDown = true;
+                if (Input.GetKey(KeyCode.Space)) 
+                {
+                    hitbox.enabled = false;
+                    timer = 0.3f;
+                }
+
+            }
+            else
+            {
+                downKeyHeldDown = false;
+            }
+    }
+
+}
 
 
 }
