@@ -59,18 +59,22 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        
         // Timers
+        if (attackTimer < 0.98f)
+        {
+            attackCollider.enabled = false;
+            swipeSprite.enabled = false;
+        }
         if (attackTimer > 0)
         {
             attackTimer -= Time.deltaTime;
         }
         if (attackTimer <= 0)
         {
-            attackCollider.enabled = false;
-            swipeSprite.enabled = false;
+            attackTimer = 0;
         }
-
+        
     }
 
 
@@ -121,7 +125,10 @@ public class Enemy : MonoBehaviour
 
             if (hit.distance < 3)
             {
-                Invoke("Attack", 0.5f);
+                if (attackTimer <= 0)
+                {
+                    Invoke("Attack", 0.1f);
+                }
             }
         }
 
@@ -132,7 +139,7 @@ public class Enemy : MonoBehaviour
         attackCollider.enabled = true;
         swipeSprite.enabled = true;
 
-        attackTimer = 0.01f;
+        attackTimer = 1;
 
     }
 }
