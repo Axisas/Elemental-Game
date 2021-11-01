@@ -8,7 +8,7 @@ public class WallDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3 || collision.gameObject.tag == "Enemy")
         {
             wallDetected = true;
         }
