@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
 
     private float bulletTimer;
 
+    [SerializeField]
+    private ParticleSystem explosion;
+
     void Start()
     {
         bulletTimer = 3;
@@ -29,6 +32,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.layer == 3)
         {
             Destroy(gameObject);
+            explosion.Play();
         }
     }
 

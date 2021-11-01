@@ -30,6 +30,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Collider2D attackCollider;
 
+    [SerializeField]
+    private SpriteRenderer swipeSprite;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -65,6 +68,7 @@ public class Enemy : MonoBehaviour
         if (attackTimer <= 0)
         {
             attackCollider.enabled = false;
+            swipeSprite.enabled = false;
         }
 
     }
@@ -117,7 +121,7 @@ public class Enemy : MonoBehaviour
 
             if (hit.distance < 3)
             {
-                Invoke("Attack", 1);
+                Invoke("Attack", 0.5f);
             }
         }
 
@@ -126,8 +130,9 @@ public class Enemy : MonoBehaviour
     private void Attack()
     {
         attackCollider.enabled = true;
+        swipeSprite.enabled = true;
 
-        attackTimer = 0.5f;
+        attackTimer = 0.01f;
 
     }
 }
