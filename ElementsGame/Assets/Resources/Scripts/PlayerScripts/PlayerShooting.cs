@@ -6,11 +6,14 @@ public class PlayerShooting : MonoBehaviour
 {
 
     public GameObject projectile;
+    public GameObject heavyProjectile;
 
     private float timer;
+    private float heavyTimer;
     private Vector3 mousePos;
     public string ActiveElement;
     private bool fireCooldown;
+    private bool heavyFireCooldown;
 
     [SerializeField]
     LayerMask hitMask;
@@ -29,11 +32,15 @@ public class PlayerShooting : MonoBehaviour
         {
             Shooting();
         }
+        if (Input.GetButton("Fire2"))
+        {
+            HeavyShooting();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (fireCooldown)
+        if (fireCooldown || heavyFireCooldown)
         {
             FiringTimer();
         }
@@ -67,6 +74,19 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
+    private void HeavyShooting()
+    {
+        Vector3 projectilePosition = transform.position;
+        projectilePosition.z = 0.1f;
+
+        if (!heavyFireCooldown)
+        {
+            heavyTimer = 5f;
+            heavyFireCooldown = true;
+            Instantiate(heavyProjectile, projectilePosition, transform.rotation);
+        }
+    }
+
     private void FiringTimer()
     {
 
@@ -76,9 +96,21 @@ public class PlayerShooting : MonoBehaviour
         }
         if (timer <= 0)
         {
+            timer = 0;
             fireCooldown = false;
         }
 
+        if (heavyTimer > 0)
+        {
+            heavyTimer -= Time.deltaTime;
+        }
+        if (heavyTimer <= 0)
+        {
+            heavyTimer = 0;
+            heavyFireCooldown = false;
+        }
+
+    
     }
 
 

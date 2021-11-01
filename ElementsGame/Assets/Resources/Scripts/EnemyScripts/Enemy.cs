@@ -112,6 +112,10 @@ public class Enemy : MonoBehaviour
         {
             health--;
         }
+        if (collision.gameObject.tag == "PlayerStrongProjectile")
+        {
+            health -= 3;
+        }
     }
 
     private void LookForPlayer()

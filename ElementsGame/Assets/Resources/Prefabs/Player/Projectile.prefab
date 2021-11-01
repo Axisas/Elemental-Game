@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4438436206438016800}
   - component: {fileID: 6498142684032051106}
   - component: {fileID: 5989530129877940687}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707667205871886295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8876032463814943559}
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
+      scalar: 0.5
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -4872,7 +4872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2307925567251362841}
   - component: {fileID: 6725504864241695354}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4954,7 +4954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8932203620107803357}
   - component: {fileID: 7599594954287913422}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5048,7 +5048,7 @@ GameObject:
   - component: {fileID: 1255183321523718703}
   - component: {fileID: 568812592595872057}
   - component: {fileID: 5054967246752717044}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9869,7 +9869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8876032463814943552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2307925567251362841}
@@ -9894,6 +9894,9 @@ MonoBehaviour:
   bulletSpeed: 40
   rb: {fileID: 6216940800485318642}
   explosion: {fileID: 6498142684032051106}
+  trail: {fileID: 568812592595872057}
+  sprite: {fileID: 6725504864241695354}
+  c: {fileID: -1956204276533375566}
 --- !u!50 &6216940800485318642
 Rigidbody2D:
   serializedVersion: 4

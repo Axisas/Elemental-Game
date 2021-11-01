@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 8876032463814943552, guid: bed3736abb365c7478e521e9a1843fe8, type: 3}
+  heavyProjectile: {fileID: 3310254844714566388, guid: b9cfb0219ff61194ab9748f6c2fccb5f, type: 3}
   ActiveElement: Fire
   hitMask:
     serializedVersion: 2

@@ -13,6 +13,15 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
 
+    [SerializeField]
+    private ParticleSystem trail;
+
+    [SerializeField]
+    private SpriteRenderer sprite;
+    
+    [SerializeField]
+    private Collider2D c;
+
     void Start()
     {
         bulletTimer = 3;
@@ -31,13 +40,21 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.layer == 3)
         {
-            Destroy(gameObject);
             explosion.Play();
+            trail.Stop();
+            c.enabled = false;
+            sprite.enabled = false;
+            rb.velocity = Vector2.zero;
+            Destroy(gameObject, 0.5f);
         }
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
             explosion.Play();
+            trail.Stop();
+            c.enabled = false;
+            sprite.enabled = false;
+            rb.velocity = Vector2.zero;
+            Destroy(gameObject, 0.5f);
         }
     }
 
