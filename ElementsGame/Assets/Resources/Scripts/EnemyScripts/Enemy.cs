@@ -110,7 +110,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            Destroy(collision.gameObject);
             health--;
         }
     }

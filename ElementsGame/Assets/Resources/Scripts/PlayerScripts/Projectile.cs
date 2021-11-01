@@ -34,6 +34,11 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             explosion.Play();
         }
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            explosion.Play();
+        }
     }
 
 }

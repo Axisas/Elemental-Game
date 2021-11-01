@@ -97,6 +97,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyAttacks")
+        {
+            Health -= 5;
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Health -= 1;
+        }
+    }
 
 
 }
