@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
@@ -8,8 +6,11 @@ public class PlayerShooting : MonoBehaviour
     public GameObject projectile;
     public GameObject heavyProjectile;
 
+    public HeavyCDBar cooldownBar;
+
     private float timer;
     private float heavyTimer;
+    private float cooldownTimer;
     private Vector3 mousePos;
     public string ActiveElement;
     private bool fireCooldown;
@@ -20,12 +21,15 @@ public class PlayerShooting : MonoBehaviour
 
     private void Start()
     {
+        cooldownTimer = 10;
         ActiveElement = "Fire";
+        int Timer = (int)cooldownTimer;
+        cooldownBar.SetMaxValue(Timer);
     }
 
     private void Update()
     {
-
+        Debug.Log(cooldownTimer);
         LookAtMouse();
 
         if (Input.GetButton("Fire1"))
@@ -44,6 +48,8 @@ public class PlayerShooting : MonoBehaviour
         {
             FiringTimer();
         }
+
+        cooldownBar.SetValue(cooldownTimer);
     }
 
     private void LookAtMouse()
@@ -81,7 +87,8 @@ public class PlayerShooting : MonoBehaviour
 
         if (!heavyFireCooldown)
         {
-            heavyTimer = 5f;
+            heavyTimer = 10;
+            cooldownTimer = 0;
             heavyFireCooldown = true;
             Instantiate(heavyProjectile, projectilePosition, transform.rotation);
         }
@@ -103,6 +110,8 @@ public class PlayerShooting : MonoBehaviour
         if (heavyTimer > 0)
         {
             heavyTimer -= Time.deltaTime;
+            cooldownTimer += Time.deltaTime;
+
         }
         if (heavyTimer <= 0)
         {
