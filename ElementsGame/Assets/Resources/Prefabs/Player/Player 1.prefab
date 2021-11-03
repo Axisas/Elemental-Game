@@ -5205,13 +5205,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   groundCheck: {fileID: 5819412227085166640}
-  sphereRadius: 1
+  sphereRadius: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   jumpHeight: 15
-  Health: 0
+  maxHealth: 20
+  health: 0
   roomsGenerated: 0
+  healthBar: {fileID: 0}
   spriteRenderer: {fileID: 2827413576569753986}
   hitbox: {fileID: 5819412227843139001}
   damageEffect: {fileID: 2957262584185608193}

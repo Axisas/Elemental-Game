@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     public float jumpHeight;
 
-    public float Health;
+    public int maxHealth;
+    public int health;
 
     public float roomsGenerated;
 
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool downKeyHeldDown;
     private float timer;
 
+    public HealthBar healthBar;
 
     [SerializeField]
     private GameObject spriteRenderer;
@@ -38,7 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Health = 10;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void FixedUpdate()
@@ -77,7 +80,7 @@ public class PlayerController : MonoBehaviour
             AirJump();
         }
 
-        if (Health <= 0)
+        if (health <= 0)
         {
             //Ded
             Debug.Log("RIP");
@@ -127,13 +130,19 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "EnemyAttacks")
         {
             damageEffect.Play();
-            Health -= 5;
+            TakeDamage(5);
         }
         if (collision.gameObject.tag == "Enemy")
         {
             damageEffect.Play();
-            Health -= 1;
+            TakeDamage(1);
         }
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        healthBar.SetHealth(health);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -155,6 +164,7 @@ public class PlayerController : MonoBehaviour
                 downKeyHeldDown = false;
             }
     }
+
 
 }
 

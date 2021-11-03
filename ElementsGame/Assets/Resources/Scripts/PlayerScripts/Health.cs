@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        hp = playerScript.Health;
+        hp = playerScript.health;
 
         hpText.text = hp.ToString();
     }
