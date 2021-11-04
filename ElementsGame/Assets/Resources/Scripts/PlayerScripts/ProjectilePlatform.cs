@@ -8,7 +8,7 @@ public class ProjectilePlatform : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    private float bulletTimer;
+    private float timer;
     private float platformTimer;
 
     [SerializeField]
@@ -21,37 +21,34 @@ public class ProjectilePlatform : MonoBehaviour
     private SpriteRenderer sprite;
 
     [SerializeField]
-    private Collider2D triggerCollider;
+    private Collider2D c;
 
-    [SerializeField]
-    private Collider2D platformCollider;
 
     void Start()
     {
-        bulletTimer = 3;
         rb.velocity = transform.right * bulletSpeed;
-        if (bulletTimer > 0)
-        {
-            bulletTimer -= Time.deltaTime;
-        }
-        if (bulletTimer <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Ground") 
-        {
-            platformCollider.enabled = true;
-            sprite.enabled = true;
-            platformTimer = 3;
-        }
-
+        c.enabled = false;
+        timer = 0.28f;
+        platformTimer = 5;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void Update()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (timer <= 0)
+        {
+            timer = 0;
+            c.enabled = true;
+        }
+
+        Timer();
+    }
+
+    private void Timer()
     {
         if (platformTimer > 0)
         {
@@ -60,7 +57,11 @@ public class ProjectilePlatform : MonoBehaviour
         if (platformTimer <= 0)
         {
             platformTimer = 0;
-            Destroy(gameObject);
+            explosion.Play();
+            c.enabled = false;
+            sprite.enabled = false;
+            trail.Stop();
+            Destroy(gameObject, 1);
         }
     }
 }

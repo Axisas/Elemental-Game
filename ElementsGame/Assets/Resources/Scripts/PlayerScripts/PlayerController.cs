@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
 
     [SerializeField]
+    private PlayerShooting firingScript;
+
+    [SerializeField]
     private GameObject spriteRenderer;
 
     [SerializeField]
@@ -163,10 +166,19 @@ public class PlayerController : MonoBehaviour
             {
                 downKeyHeldDown = false;
             }
+        }
     }
 
-
-}
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "RedCrystal")
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                firingScript.ActiveElement = 0;
+            }
+        }
+    }
 
 
 }

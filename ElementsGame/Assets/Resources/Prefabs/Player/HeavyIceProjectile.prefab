@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027044794988597952}
   - component: {fileID: 3657768903079441349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IceCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067959395241652903}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8753186965119842915}
   - component: {fileID: 2010710169579341316}
   - component: {fileID: 5318716420969563167}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2221180492783627763}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.452, z: 0}
+  m_LocalPosition: {x: 0, y: -0.334, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3311678312653984944}
@@ -197,8 +197,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
-      minScalar: 0.3
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -366,8 +366,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.12
-      minScalar: 0.02
+      scalar: 0.08
+      minScalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 2449143389812318918}
   - component: {fileID: 5045527257060343699}
   - component: {fileID: 2036380930777295030}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4911,13 +4911,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3212889254228392077}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.001988431, y: 0.00908997, z: -0.0137485815}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3311678312653984944}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &5045527257060343699
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9760,8 +9760,7 @@ GameObject:
   - component: {fileID: 6116611760633931744}
   - component: {fileID: 2483395308128429834}
   - component: {fileID: 7765040058298490454}
-  - component: {fileID: 4671937754483637053}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: HeavyIceProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -9798,10 +9797,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.001
-  m_LinearDrag: 0
+  m_Mass: 1
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -9819,40 +9818,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7720877f52663ce4f872a91ed78c1692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0
+  bulletSpeed: 8
   rb: {fileID: 6116611760633931744}
   explosion: {fileID: 5045527257060343699}
   trail: {fileID: 2010710169579341316}
   sprite: {fileID: 3657768903079441349}
-  triggerCollider: {fileID: 7765040058298490454}
-  platformCollider: {fileID: 4671937754483637053}
+  c: {fileID: 7765040058298490454}
 --- !u!61 &7765040058298490454
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311678312653984945}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
-  m_EdgeRadius: 0
---- !u!61 &4671937754483637053
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9888,7 +9860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48480155831368019}
   - component: {fileID: 2226472338402983185}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9903,7 +9875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4983013943254453466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3311678312653984944}

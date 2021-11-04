@@ -48,7 +48,7 @@ MonoBehaviour:
   iceProjectile: {fileID: 3311678312653984945, guid: 28c155b6897a0bf448d2cafd3671c3c7, type: 3}
   iceHeavyProjectile: {fileID: 3311678312653984945, guid: 28c155b6897a0bf448d2cafd3671c3c7, type: 3}
   cooldownBar: {fileID: 0}
-  ActiveElement: NaN
+  ActiveElement: 0
   hitMask:
     serializedVersion: 2
     m_Bits: 65536
@@ -5217,6 +5217,7 @@ MonoBehaviour:
   health: 0
   roomsGenerated: 0
   healthBar: {fileID: 0}
+  firingScript: {fileID: 6784772623174993347}
   spriteRenderer: {fileID: 2827413576569753986}
   hitbox: {fileID: 5819412227843139001}
   damageEffect: {fileID: 2957262584185608193}

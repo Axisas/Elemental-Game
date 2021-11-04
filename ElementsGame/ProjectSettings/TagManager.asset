@@ -12,6 +12,7 @@ TagManager:
   - EnemyAttacks
   - PlayerStrongProjectile
   - WoodenPlatform
+  - RedCrystal
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - Player
   - PlayerProjectile
-  - 
+  - IceCube
   - 
   - 
   - 

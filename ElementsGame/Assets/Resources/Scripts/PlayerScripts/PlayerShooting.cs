@@ -17,9 +17,10 @@ public class PlayerShooting : MonoBehaviour
     private float heavyTimer;
     private float cooldownTimer;
     private Vector3 mousePos;
-    public float ActiveElement;
     private bool fireCooldown;
     private bool heavyFireCooldown;
+
+    public float ActiveElement;
 
     [SerializeField]
     LayerMask hitMask;
@@ -106,14 +107,8 @@ public class PlayerShooting : MonoBehaviour
             heavyTimer = 10;
             cooldownTimer = 0;
             heavyFireCooldown = true;
-            if (ActiveElement == 1)
-            {
-                Quaternion rotation = Quaternion.Euler(0, 0, 0);
-                Instantiate(activeHeavyProjectile, projectilePosition, rotation);
-            } else
-            {
-                Instantiate(activeHeavyProjectile, projectilePosition, transform.rotation);
-            }
+            Instantiate(activeHeavyProjectile, projectilePosition, transform.rotation);
+            
         }
     }
 
