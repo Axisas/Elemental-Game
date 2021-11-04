@@ -340,7 +340,7 @@ Assets\Resources\Scripts\EnvironmentScripts\CrystalRandomizer.cs
 Assets\Resources\Scripts\EnvironmentScripts\EnemySpawner.cs
 Assets\Resources\Scripts\EnvironmentScripts\Generator.cs
 Assets\Resources\Scripts\EnvironmentScripts\RoomGenerator.cs
-Assets\Resources\Scripts\GameManager.cs
+Assets\Resources\Scripts\MainMenu.cs
 Assets\Resources\Scripts\PlayerScripts\CameraController.cs
 Assets\Resources\Scripts\PlayerScripts\Health.cs
 Assets\Resources\Scripts\PlayerScripts\HealthBar.cs
@@ -349,3 +349,4 @@ Assets\Resources\Scripts\PlayerScripts\PlayerController.cs
 Assets\Resources\Scripts\PlayerScripts\PlayerShooting.cs
 Assets\Resources\Scripts\PlayerScripts\Projectile.cs
 Assets\Resources\Scripts\PlayerScripts\ProjectilePlatform.cs
+Assets\Resources\Scripts\StartOverMenu.cs
