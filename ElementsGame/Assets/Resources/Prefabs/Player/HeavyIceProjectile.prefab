@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027044794988597952}
   - component: {fileID: 3657768903079441349}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: IceCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8753186965119842915}
   - component: {fileID: 2010710169579341316}
   - component: {fileID: 5318716420969563167}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 2449143389812318918}
   - component: {fileID: 5045527257060343699}
   - component: {fileID: 2036380930777295030}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9760,7 +9760,7 @@ GameObject:
   - component: {fileID: 6116611760633931744}
   - component: {fileID: 2483395308128429834}
   - component: {fileID: 7765040058298490454}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: HeavyIceProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -9860,7 +9860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48480155831368019}
   - component: {fileID: 2226472338402983185}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

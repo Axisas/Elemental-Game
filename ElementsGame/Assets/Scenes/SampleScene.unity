@@ -2097,6 +2097,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 243049608}
+    - target: {fileID: 8216343143256424395, guid: a153a0385146d0a4287416b19c788aad, type: 3}
+      propertyPath: sphereRadius
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8216343143256424396, guid: a153a0385146d0a4287416b19c788aad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2161,6 +2165,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -311
       objectReference: {fileID: 0}
+    - target: {fileID: 8216343143958557251, guid: a153a0385146d0a4287416b19c788aad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8216343144754004188, guid: a153a0385146d0a4287416b19c788aad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2177,5 +2185,7 @@ PrefabInstance:
       propertyPath: ActiveElement
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7413606038793299621, guid: a153a0385146d0a4287416b19c788aad, type: 3}
+    - {fileID: 8054511015932772455, guid: a153a0385146d0a4287416b19c788aad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a153a0385146d0a4287416b19c788aad, type: 3}

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
-    public Transform groundCheck;
     public float sphereRadius;
     public LayerMask groundMask;
     public float jumpHeight;
@@ -23,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private float timer;
 
     public HealthBar healthBar;
+    public Transform groundCheck;
 
     [SerializeField]
     private PlayerShooting firingScript;
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         if (Physics2D.OverlapCircle(groundCheck.position, sphereRadius, groundMask) == null)
         {
             inAir = true;
@@ -74,11 +75,12 @@ public class PlayerController : MonoBehaviour
             inAir = false;
             airJumpLeft = true;
         }
-
+        
         if (!inAir)
         {
+            airJumpLeft = true;
             Jump();
-        }
+        } 
         if (inAir && airJumpLeft)
         {
             AirJump();
@@ -114,8 +116,6 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 yMovement = new Vector2(playerRigidBody.velocity.x, jumpHeight);
             playerRigidBody.AddForce(yMovement, ForceMode2D.Impulse);
-
-            airJumpLeft = false;
         }
     }
 
@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour
                     hitbox.enabled = false;
                     timer = 0.3f;
                 }
-
             }
             else
             {
@@ -187,6 +186,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-
 }
