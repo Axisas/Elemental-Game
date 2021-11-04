@@ -59,11 +59,11 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
+        bulletSpeed = 0;
         explosion.Play();
         trail.Stop();
         c.enabled = false;
         sprite.enabled = false;
-        rb.velocity = Vector2.zero;
         Destroy(gameObject, 0.5f);
     }
 

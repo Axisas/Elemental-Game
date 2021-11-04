@@ -8,6 +8,10 @@ public class PausedMenu : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
