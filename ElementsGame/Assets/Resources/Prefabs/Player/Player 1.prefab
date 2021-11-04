@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725a9a7b0ffd2f94e9ae43a617eba9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 8876032463814943552, guid: bed3736abb365c7478e521e9a1843fe8, type: 3}
-  heavyProjectile: {fileID: 3310254844714566388, guid: b9cfb0219ff61194ab9748f6c2fccb5f, type: 3}
-  ActiveElement: Fire
+  fireProjectile: {fileID: 8876032463814943552, guid: bed3736abb365c7478e521e9a1843fe8, type: 3}
+  fireHeavyProjectile: {fileID: 3310254844714566388, guid: b9cfb0219ff61194ab9748f6c2fccb5f, type: 3}
+  iceProjectile: {fileID: 3311678312653984945, guid: 28c155b6897a0bf448d2cafd3671c3c7, type: 3}
+  iceHeavyProjectile: {fileID: 3311678312653984945, guid: 28c155b6897a0bf448d2cafd3671c3c7, type: 3}
+  cooldownBar: {fileID: 0}
+  ActiveElement: NaN
   hitMask:
     serializedVersion: 2
     m_Bits: 65536

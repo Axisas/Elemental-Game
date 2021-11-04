@@ -3,8 +3,13 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
 
-    public GameObject projectile;
-    public GameObject heavyProjectile;
+    public GameObject fireProjectile;
+    public GameObject fireHeavyProjectile;
+    public GameObject iceProjectile;
+    public GameObject iceHeavyProjectile;
+
+    private GameObject activeProjectile;
+    private GameObject activeHeavyProjectile;
 
     public HeavyCDBar cooldownBar;
 
@@ -12,7 +17,7 @@ public class PlayerShooting : MonoBehaviour
     private float heavyTimer;
     private float cooldownTimer;
     private Vector3 mousePos;
-    public string ActiveElement;
+    public float ActiveElement;
     private bool fireCooldown;
     private bool heavyFireCooldown;
 
@@ -22,14 +27,13 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         cooldownTimer = 10;
-        ActiveElement = "Fire";
         int Timer = (int)cooldownTimer;
         cooldownBar.SetMaxValue(Timer);
     }
 
     private void Update()
     {
-        Debug.Log(cooldownTimer);
+
         LookAtMouse();
 
         if (Input.GetButton("Fire1"))
@@ -39,6 +43,18 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButton("Fire2"))
         {
             HeavyShooting();
+        }
+
+        if (ActiveElement == 0)
+        {
+            activeProjectile = fireProjectile;
+            activeHeavyProjectile = fireHeavyProjectile;
+            return;
+        } 
+        if (ActiveElement == 1)
+        {
+            activeProjectile = iceProjectile;
+            activeHeavyProjectile = iceHeavyProjectile;
         }
     }
 
@@ -76,7 +92,7 @@ public class PlayerShooting : MonoBehaviour
         {
             timer = 1f;
             fireCooldown = true;
-            Instantiate(projectile, projectilePosition, transform.rotation);
+            Instantiate(activeProjectile, projectilePosition, transform.rotation);
         }
     }
 
@@ -90,7 +106,14 @@ public class PlayerShooting : MonoBehaviour
             heavyTimer = 10;
             cooldownTimer = 0;
             heavyFireCooldown = true;
-            Instantiate(heavyProjectile, projectilePosition, transform.rotation);
+            if (ActiveElement == 1)
+            {
+                Quaternion rotation = Quaternion.Euler(0, 0, 0);
+                Instantiate(activeHeavyProjectile, projectilePosition, rotation);
+            } else
+            {
+                Instantiate(activeHeavyProjectile, projectilePosition, transform.rotation);
+            }
         }
     }
 

@@ -1190,6 +1190,18 @@ PrefabInstance:
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 2034100304}
+    - target: {fileID: 6784772623174993347, guid: 256637b5b303fa640bd8ada708733473, type: 3}
+      propertyPath: ActiveElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784772623174993347, guid: 256637b5b303fa640bd8ada708733473, type: 3}
+      propertyPath: iceProjectile
+      value: 
+      objectReference: {fileID: 162312053831588532, guid: 74239edea2805de48b64ea7116cb3509, type: 3}
+    - target: {fileID: 6784772623174993347, guid: 256637b5b303fa640bd8ada708733473, type: 3}
+      propertyPath: iceHeavyProjectile
+      value: 
+      objectReference: {fileID: 3311678312653984945, guid: 28c155b6897a0bf448d2cafd3671c3c7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256637b5b303fa640bd8ada708733473, type: 3}
 --- !u!1001 &6974387489462434874

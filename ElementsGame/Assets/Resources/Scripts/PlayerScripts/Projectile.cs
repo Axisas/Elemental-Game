@@ -22,10 +22,14 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private Collider2D c;
 
-    void Start()
+    private void Start()
     {
-        bulletTimer = 3;
+        bulletTimer = 4;
         rb.velocity = transform.right * bulletSpeed;
+    }
+
+    private void Update()
+    {
         if (bulletTimer > 0)
         {
             bulletTimer -= Time.deltaTime;
