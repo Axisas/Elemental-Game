@@ -166,9 +166,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 188002093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a97972e5f953e8409d7922af0229865, type: 3}
+  m_Script: {fileID: 11500000, guid: 728688e435d659b4b964272b962f25c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: 1
 --- !u!1 &298581821
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 188002095}
-        m_TargetAssemblyTypeName: StartOverMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -972,7 +973,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 188002095}
-        m_TargetAssemblyTypeName: StartOverMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
