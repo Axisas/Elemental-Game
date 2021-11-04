@@ -25,11 +25,12 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         bulletTimer = 4;
-        rb.velocity = transform.right * bulletSpeed;
     }
 
     private void Update()
     {
+        rb.velocity = transform.right * bulletSpeed;
+
         if (bulletTimer > 0)
         {
             bulletTimer -= Time.deltaTime;
@@ -44,22 +45,26 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.layer == 3)
         {
-            explosion.Play();
-            trail.Stop();
-            c.enabled = false;
-            sprite.enabled = false;
-            rb.velocity = Vector2.zero;
-            Destroy(gameObject, 0.5f);
+            Explode();
         }
         if (other.gameObject.tag == "Enemy")
         {
-            explosion.Play();
-            trail.Stop();
-            c.enabled = false;
-            sprite.enabled = false;
-            rb.velocity = Vector2.zero;
-            Destroy(gameObject, 0.5f);
+            Explode();
         }
+        if (other.gameObject.layer == 8)
+        {
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
+        explosion.Play();
+        trail.Stop();
+        c.enabled = false;
+        sprite.enabled = false;
+        rb.velocity = Vector2.zero;
+        Destroy(gameObject, 0.5f);
     }
 
 }

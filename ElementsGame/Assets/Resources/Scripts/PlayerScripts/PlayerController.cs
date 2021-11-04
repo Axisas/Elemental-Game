@@ -178,6 +178,13 @@ public class PlayerController : MonoBehaviour
                 firingScript.ActiveElement = 0;
             }
         }
+        if (collision.gameObject.tag == "BlueCrystal")
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                firingScript.ActiveElement = 1;
+            }
+        }
     }
 
 
